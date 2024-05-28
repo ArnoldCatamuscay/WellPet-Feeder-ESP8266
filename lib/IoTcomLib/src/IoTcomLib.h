@@ -1,6 +1,12 @@
 #ifndef _IoTcomLib
 #define _IoTcomLib
 
+#include <NTPClient.h>
+#include <WiFiUdp.h>
+
+// Define NTP Client to get time
+WiFiUDP ntpUDP;
+NTPClient timeClient(ntpUDP, "pool.ntp.org");
 
 //------------------- FUNCIONES PARA CONECTAR A LA RED ---------------------
 #include <ESP8266WiFi.h>

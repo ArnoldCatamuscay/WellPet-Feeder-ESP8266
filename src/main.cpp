@@ -81,6 +81,16 @@ void setup()
   client.setServer(mqttAddress, port); //? Para leer
   client.setCallback(callback);
   // reconnect();
+  //*-------------- Inicializar NTPClient --------------
+  // https://randomnerdtutorials.com/esp8266-nodemcu-date-time-ntp-client-server-arduino/
+  timeClient.begin();
+  // Set offset time in seconds to adjust for your timezone, for example:
+  // GMT +1 = 3600
+  // GMT +8 = 28800
+  // GMT -1 = -3600
+  // GMT 0 = 0
+  // GMT 5 = 18000
+  timeClient.setTimeOffset(18000);
 }
 
 void loop()                    
@@ -90,6 +100,19 @@ void loop()
     reconnect();
   }
   client.loop();
+  
+  //* Obtener la hora actual
+  timeClient.update();
+  Serial.print("=========== NTPClient ===========");
+  int currentHour = timeClient.getHours();
+  Serial.print("Hour: ");
+  Serial.println(currentHour);  
+
+  int currentMinute = timeClient.getMinutes();
+  Serial.print("Minutes: ");
+  Serial.println(currentMinute); 
+
+  delay(2000);
 
   // Solamente actualiza si el tiempo de publicación es excedido
   /*if (millis() - lastUpdateTime >=  postingInterval) {
