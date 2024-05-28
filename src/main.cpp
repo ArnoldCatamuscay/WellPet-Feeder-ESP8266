@@ -6,7 +6,7 @@
 #include <WiFiManager.h>
 
 //* Servo Pin
-const int servoPin = D7; //https://elosciloscopio.com/tutorial-servomotor-arduino-esp8266-y-esp32/
+const int servoPin = D3; //https://elosciloscopio.com/tutorial-servomotor-arduino-esp8266-y-esp32/ https://techatronic.com/esp8266-with-servo-motor-control-servo-motor-with-esp8266/
 
 //* HX711 circuit wiring
 const int DT = D6; //GPIO 12
